@@ -32,8 +32,9 @@ export default {
     text-align: center;
   }
   .image{
+    height: 170px;
+    width: auto;
     max-width: 300px;
-    max-height: 200px;
   }
   .price-basket{
     display: flex;

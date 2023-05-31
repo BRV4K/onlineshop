@@ -39,7 +39,7 @@ export default {
   data(){
     return {
       products: this.products,
-      show: false,
+      show: true,
       showBasket: false,
       basket: [],
       search: ''
