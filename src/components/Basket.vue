@@ -1,7 +1,10 @@
 <template>
   <div class="basket" v-if="showBasket">
-    <p>Yorr products: </p>
+    <p>Your products: </p>
     <div v-for="product in basket" :key="product.id">{{product.title}}</div>
+    <div>
+      <p><strong>Total price: </strong></p>
+    </div>
   </div>
 </template>
 

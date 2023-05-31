@@ -11,14 +11,13 @@
       <div class="input">
         <div class="search-type-img">
           <input type="text" v-model='search' placeholder="Search" class="input-type">
-          <img src="@/assets/search.png" width="50" height="50" class="serach-img" @click="find">
         </div>
         <select class="sort">
           <option value="price">Price</option>
           <option value="alphabet">Alphabet</option>
         </select>
       </div>
-      <div class="products">
+      <div class="products" >
         <productCard v-for="product in products" :key="product.id" :product="product" :show="show" @addProduct="addProduct" @showTrue="showTrue"/>
       </div>
       <fullProductCard v-for="product in products" :key="product.id" :product="product" :show="show"/>
@@ -43,7 +42,7 @@ export default {
     return {
       products: this.products,
       show: false,
-      showBasket: true,
+      showBasket: false,
       basket: [],
       search: ''
     }
@@ -72,6 +71,11 @@ export default {
   },
   mounted() {
     this.getProducts();
+  },
+  computed: {
+    searching() {
+      return this.products.filter(product => product.title.toLowerCase().includes(this.search.trim().toLowerCase()))
+    }
   }
 
 }
