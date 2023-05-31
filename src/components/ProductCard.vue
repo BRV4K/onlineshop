@@ -1,6 +1,6 @@
 <template>
   <div class="product-card">
-    <img :src=product.image class="image" @click="$event => show = true" >
+    <img :src=product.image class="image" @click="showTrue" >
     <p class="title">{{product.title}}</p>
     <div class="price-basket">
       <p class="price">{{product.price}}$</p>
@@ -19,6 +19,9 @@ export default {
   methods: {
     addProduct(){
       this.$emit('addProduct')
+    },
+    showTrue(){
+      this.$emit('showTrue')
     }
   }
 }

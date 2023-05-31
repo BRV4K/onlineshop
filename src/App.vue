@@ -7,6 +7,7 @@
     </header>
 
     <main>
+      <basket :show-basket="showBasket" :basket="basket"></basket>
       <div class="input">
         <div class="search-type-img">
           <input type="text" v-model='search' placeholder="Search" class="input-type">
@@ -18,7 +19,7 @@
         </select>
       </div>
       <div class="products">
-        <productCard v-for="product in products" :key="product.id" :product="product" :show="show" @addProduct="addProduct"/>
+        <productCard v-for="product in products" :key="product.id" :product="product" :show="show" @addProduct="addProduct" @showTrue="showTrue"/>
       </div>
       <fullProductCard v-for="product in products" :key="product.id" :product="product" :show="show"/>
     </main>
@@ -30,17 +31,19 @@ import productCard from "@/components/ProductCard";
 import fullProductCard from "@/components/FullProductCard";
 import axios from 'axios';
 import basket from "@/components/Basket";
+import Basket from "@/components/Basket";
 
 export default {
   components:{
+    Basket,
     fullProductCard,
     productCard
   },
   data(){
     return {
       products: this.products,
-      show: true,
-      showBasket: false,
+      show: false,
+      showBasket: true,
       basket: [],
       search: ''
     }
@@ -60,8 +63,11 @@ export default {
     },
 
     addProduct(product){
-      this.basket.push({title: product.title, price: product.price})
-      console.log(basket.props)
+      this.basket.push({id: product.id, title: product.title, price: product.price})
+      console.log(basket)
+    },
+    showTrue(){
+      this.show = true;
     }
   },
   mounted() {

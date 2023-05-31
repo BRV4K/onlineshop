@@ -11,7 +11,7 @@
     </div>
     <div class="price-back">
       <p><strong>Price: </strong>{{product.price}}$</p>
-      <img src="@/assets/back.png" @click="$event => show = false" width="70" height="70" class="back">
+      <img src="@/assets/back.png" @click="$event => show = false" width="50" height="50" class="back">
     </div>
   </div>
 </template>
@@ -31,6 +31,9 @@ export default {
     width: 600px;
     height: 600px;
     background: #E7FFD4;
+    position: fixed;
+    left: 650px;
+    top: 120px;
   }
   .image{
     height: 300px;
@@ -40,10 +43,11 @@ export default {
   }
   .price-back{
     display: flex;
-    position: relative;
   }
   .back{
     position: absolute;
-    right: 0;
+    right: 10px;
+    bottom: 10px;
+
   }
 </style>
